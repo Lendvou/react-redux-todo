@@ -23,16 +23,18 @@ const allTodos = (state: Array<ITodoItem> = [], action: TodosPayload) => {
           name: action.payload,
           isCompleted: false
         });
+      else
+        return state
     case REMOVE_TODO:
       return state.filter((el, index) => index !== action.payload);
     case SET_TODO_STATUS:
       const oldState = [...state];
-      let item = oldState.find((todo, index) => index == action.payload);
+      let item = oldState.find((todo, index) => index === action.payload);
       if (item) {
         item.isCompleted = item.isCompleted ? false : true;
         // item = {
         //   ...item,
-        //   isCompleted: item.isCompleted ? false : true;
+        //   isCompleted: item.isCompleted ? false : true
         // }
       }
       return oldState;

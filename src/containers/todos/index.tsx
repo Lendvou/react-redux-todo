@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import './index.css';
+import './some.sass';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
   addTodo,
-  removeTodo,
   setFilter,
   setTodoStatus
 } from '../../store/actions/todosActions';
 import { getVisibleTodos } from '../../store/selectors/todosSelectors';
 
-const Todos = (props: any) => {
+const Todos = () => {
   const [value, setValue] = useState('');
   const todos = useSelector(state => getVisibleTodos(state));
   const dispatch = useDispatch();
 
-  const onAddTodo = (key: any) => {
-    if (value == '' || (key && key !== 'Enter')) return;
+  const onAddTodo = (key: string | null) => {
+    if (value === '' || (key && key !== 'Enter')) return;
 
     dispatch(addTodo(value));
     setValue('');

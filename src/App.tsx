@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './store/configureStore';
 import Todos from './containers/todos';
 
-function App(props: any) {
+function App() {
   return (
     <Provider store={store}>
       <div className="App">
